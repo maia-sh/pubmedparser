@@ -1,11 +1,21 @@
 Package: pubmedparser
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Fetch and Parse PubMed Records
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Maia Salholz-Hillel
+Maintainer: Maia Salholz-Hillel <maia.salholz-hillel@charite.de>
+Description: The `pubmedparser` package extends the [rentrez](https://github.com/ropensci/rentrez) for batch downloading [PubMed](https://www.ncbi.nlm.nih.gov/pubmed/) records using [NCBI E-Utilities](https://www.ncbi.nlm.nih.gov/books/NBK25497/). It allows the user to batch dois, query NCBI Eutils in batches, and download the resulting PubMed records.
+    The `pubmedparser` package uses [xml2](https://github.com/r-lib/xml2) to parse [PubMed XML](https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html) into a tidy format.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.0
+Imports: 
+  dplyr,
+  tidyr,
+  stringr,
+  readr,
+  purrr,
+  xml2,
+  rentrez,
+  rlang
