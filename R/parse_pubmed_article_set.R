@@ -11,11 +11,11 @@ parse_pubmed_article_set <- function(pubmed_article_set) {
 
   # Parse xml
   if (typeof(pubmed_article_set) == "character") {
-    pubmed_article_set <- read_xml(pubmed_article_set)
+    pubmed_article_set <- xml2::read_xml(pubmed_article_set)
   }
 
   # PubmedArticle (all) as xml_nodeset
-  articles <- pubmed_article_set %>% xml_find_all("PubmedArticle")
+  articles <- pubmed_article_set %>% xml2::xml_find_all("PubmedArticle")
 
   # res <- articles %>% purrr::map(parse_pubmed_article)
   res <- articles %>% purrr::map_dfr(parse_pubmed_article)

@@ -15,23 +15,23 @@
 parse_databanks <- function(pubmed_article) {
 
   # Get nodes
-  medline_citation <- pubmed_article %>% xml_find_first("MedlineCitation")
-  pubmed_data <- pubmed_article %>% xml_find_first("PubmedData")
-  databanks <- medline_citation %>% xml_find_all(".//DataBank")
+  medline_citation <- pubmed_article %>% xml2::xml_find_first("MedlineCitation")
+  pubmed_data <- pubmed_article %>% xml2::xml_find_first("PubmedData")
+  databanks <- medline_citation %>% xml2::xml_find_all(".//DataBank")
 
   # Extract xml elements
 
   # Additional info
   metadata <- list(
-    pmid = medline_citation %>% xml_find_all("PMID") %>% xml_integer(),
-    doi = pubmed_data %>% xml_find_all("ArticleIdList/ArticleId[@IdType='doi']") %>% xml_text(),
+    pmid = medline_citation %>% xml2::xml_find_all("PMID") %>% xml2::xml_integer(),
+    doi = pubmed_data %>% xml2::xml_find_all("ArticleIdList/ArticleId[@IdType='doi']") %>% xml2::xml_text(),
     # Whether databank list is complete
-    nlm_complete_db = medline_citation %>% xml_find_all(".//DataBankList") %>% xml_attr("CompleteYN")
+    nlm_complete_db = medline_citation %>% xml2::xml_find_all(".//DataBankList") %>% xml2::xml_attr("CompleteYN")
   )
 
   # Databank infoq
-  db_name <- databanks %>% xml_find_all(".//DataBankName") %>% xml_text()
-  db_accession_n <- databanks %>% xml_find_all(".//AccessionNumber") %>% xml_text()
+  db_name <- databanks %>% xml2::xml_find_all(".//DataBankName") %>% xml2::xml_text()
+  db_accession_n <- databanks %>% xml2::xml_find_all(".//AccessionNumber") %>% xml2::xml_text()
   named_accession_n <- rlang::set_names(db_accession_n, nm = db_name)
 
   # TIBBLE
