@@ -40,7 +40,7 @@ my_article_set <-
 write_pubmed_files(my_article_set)
 ````
 
-# PART 2: Extract and tidy data from PubMed records
+## PART 2: Extract and tidy data from PubMed records
 ```R
 parse_pubmed_article_set()
 parse_pubmed_article()
