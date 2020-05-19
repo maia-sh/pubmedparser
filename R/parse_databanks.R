@@ -32,7 +32,7 @@ parse_databanks <- function(pubmed_article) {
   # Databank infoq
   db_name <- databanks %>% xml_find_all(".//DataBankName") %>% xml_text()
   db_accession_n <- databanks %>% xml_find_all(".//AccessionNumber") %>% xml_text()
-  named_accession_n <- set_names(db_accession_n, nm = db_name)
+  named_accession_n <- rlang::set_names(db_accession_n, nm = db_name)
 
   # TIBBLE
   out <- c(metadata, named_accession_n)
@@ -61,9 +61,7 @@ parse_databanks <- function(pubmed_article) {
   #   db_accession_n = databanks %>% xml_find_all(".//AccessionNumber") %>% xml_text()
   # )
 }
-#
-# all_equal(db_name, dbn)
-# #JSTOR
+
 # dbn <- extract_parts(databanks, ".//DataBankName")
 # extract_parts <- function(contribs, xpath) {
 #   contribs %>%
@@ -72,14 +70,3 @@ parse_databanks <- function(pubmed_article) {
 #     map_if(is_empty, ~NA_character_) %>%
 #     flatten_chr()
 # }
-# #JSTOR
-# expand_and_bind <- function(file_path, individual_part, ngram = FALSE) {
-#     list(
-#       file_name = jst_get_file_name(file_path) %>%
-#         rep(times = NROW(individual_part))
-#     ) %>%
-#       dplyr::bind_cols(individual_part)
-# }
-#
-# xml_find_all(pubmed_data_xml, "/PubmedArticleSet/PubmedArticle/MedlineCitation/Article/DataBankList/DataBank/AccessionNumberList/AccessionNumber")
-# xml_find_all(pubmed_data_xml, "//AccessionNumber")

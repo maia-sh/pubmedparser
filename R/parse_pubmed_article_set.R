@@ -17,10 +17,9 @@ parse_pubmed_article_set <- function(pubmed_article_set) {
   # PubmedArticle (all) as xml_nodeset
   articles <- pubmed_article_set %>% xml_find_all("PubmedArticle")
 
-  # res <- articles %>% map(parse_pubmed_article)
-  res <- articles %>% map_dfr(parse_pubmed_article)
+  # res <- articles %>% purrr::map(parse_pubmed_article)
+  res <- articles %>% purrr::map_dfr(parse_pubmed_article)
 
-  # res <- xpathApply(pubmed_article_set, "/PubmedArticleSet/*", parse_one_pubmed)
   # TODO: may need to change length() to nrows()
   if (length(res) == 1) {
     return(res[[1]])

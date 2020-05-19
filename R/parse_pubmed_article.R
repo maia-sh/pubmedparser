@@ -6,8 +6,6 @@
 #' @return Dataframe of one row with summary information about article.
 #' @export
 #' @examples
-# parse_pubmed_article <- function(pubmed_article){return(pubmed_article)}
-# sample(10:15, 1)
 
 #TODO: better to make sub-scopes or repeat path? better to make more specific path?
 #TODO: create "extract" helper functions; decide between xml_find_all() and xml_child()
@@ -15,23 +13,12 @@
 
 parse_pubmed_article <- function(pubmed_article) {
 
-  # atype <- xml_name(pubmed_article)
-  # if (atype != "PubmedArticle") {
-  #   pmid = xpathSApply(pubmed_article, "//PMID", xmlValue)
-  #   msg = paste0("Pubmed record ", pmid, " is of type '",
-  #                atype, "' which  rentrez doesn't know how to parse.",
-  #                " Returning empty record")
-  #   warning(msg)
-  #   return(structure(list(), class = "pubmed_record", empty = TRUE))
-  # }
-
   # Get MedlineCitation and PubmedData of PubmedArticle (first) as nodes
   medline_citation <- pubmed_article %>% xml_find_first("MedlineCitation")
   pubmed_data <- pubmed_article %>% xml_find_first("PubmedData")
 
   # Extract xml elements
   # Possible Additional:  <MedlineCitation VersionID =”Value”> and <MedlineCitation VersionDate =”Value”>, <PMID Version = "#">, more <Journal> elements, GrantList, SupplMeshList, CommentsCorrectionsList, MeshHeadingList (or specific mesh terms?), OtherID
-
 
   out <- list(
     title = medline_citation %>% xml_find_all(".//ArticleTitle") %>% xml_text(),
@@ -76,7 +63,3 @@ parse_pubmed_article <- function(pubmed_article) {
 
   # out
 }
-# get_value <- function(path) {
-#   return(xpathSApply(pubmed_article, path, xmlValue))
-# }
-
