@@ -4,7 +4,7 @@
 \alias{write_pubmed_files}
 \title{Save PubMed files}
 \usage{
-write_pubmed_files(pubmed_data, dir = getwd())
+write_pubmed_files(pubmed_data, dir = getwd(), prefix = "")
 }
 \arguments{
 \item{pubmed_data}{Character vector of unparsed XML with root node "PubmedArticleSet". Generally the output of \code{\link{batch_fetch_pubmed_records}}.}

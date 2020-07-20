@@ -20,3 +20,5 @@ Imports:
     rentrez,
     rlang,
     magrittr
+Suggests: 
+    testthat
