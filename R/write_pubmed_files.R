@@ -19,9 +19,11 @@
 # TODO: decide whether to save within fetch or after batch
 # TODO: improve filenaming and user options
 
-write_pubmed_files <- function(pubmed_data, dir = getwd()) {
+write_pubmed_files <- function(pubmed_data, dir = getwd(), prefix = "") {
+  if (prefix != "") {prefix = paste0("_", prefix)}
+
   purrr::walk2(pubmed_data,
-        paste0(dir, "/", Sys.Date(), "_pubmeddata_",
+        paste0(dir, "/", Sys.Date(), prefix, "_pubmed_data_",
                1:length(pubmed_data), ".txt"),
         readr::write_file)
 }
