@@ -4,6 +4,7 @@
 #'
 #' @param pubmed_data Character vector of unparsed XML with root node "PubmedArticleSet". Generally the output of \code{\link{batch_fetch_pubmed_records}}.
 #' @param dir Directory to save files to. Default = current directory via \code{getwd()}.
+#' @param prefix Prefix to append to filename (optional)
 #' @return SIDE-EFFECT. Unparsed XML in ".txt" files with batch number
 #' @export
 #' @examples
