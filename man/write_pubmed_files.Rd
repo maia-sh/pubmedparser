@@ -10,6 +10,8 @@ write_pubmed_files(pubmed_data, dir = getwd(), prefix = "")
 \item{pubmed_data}{Character vector of unparsed XML with root node "PubmedArticleSet". Generally the output of \code{\link{batch_fetch_pubmed_records}}.}
 
 \item{dir}{Directory to save files to. Default = current directory via \code{getwd()}.}
+
+\item{prefix}{Prefix to append to filename (optional)}
 }
 \value{
 SIDE-EFFECT. Unparsed XML in ".txt" files with batch number

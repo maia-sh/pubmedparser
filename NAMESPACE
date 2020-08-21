@@ -3,6 +3,7 @@
 export("%>%")
 export(batch_dois)
 export(batch_fetch_pubmed_records)
+export(batch_ids)
 export(create_query_strings)
 export(parse_abstract)
 export(parse_authors)
