@@ -3,6 +3,7 @@
 #' Batch IDs to account for Eutils server limits
 #' @param esearch Esearch object. Generally the output of \code{\link{search_get_pmids}} or \code{\link{check_update_esearch}}.
 #' @param  batch_start Record batch should start with. Default to 1.
+#' @param records_max Max records to fetch. Defaults to NULL and dynamically set to max of esearch query.
 #'  @param  batch_size Maximum batch size. Defaults to 10000, which is eutilities' limit.
 #'  @param save_file Whether batch should be saved as raw characters to file. Defaults to TRUE.
 #'  @param dir Directory for saving files. Default to project root (\code{here::here()})
@@ -21,14 +22,25 @@
 
 fetch_batch <- function(esearch, #or web_history?
                         batch_start = 1,
+                        records_max = NULL,
                         batch_size = 10000,
                         save_file = TRUE,
                         dir = here::here(),
                         file_name = NULL,
                         quiet = FALSE) {
 
-  # Batch ends at batch max or query max, whichever is smaller
-  batch_end <- min(batch_start + batch_size - 1, esearch$count)
+
+  if (is_null(records_max)) {records_max <- esearch$count}
+
+  # Batch ends at batch max, query max, or records max, whichever is smaller
+  batch_end <- pmin(batch_start + batch_size - 1, esearch$count, records_max)
+
+  # if (records_max < esearch$count) {
+  # if (records_max - batch_start < batch_size) {
+  if (batch_end == records_max) {
+    batch_size <- batch_end - batch_start + 1
+  }
+
 
   # Entrez fetch uses retstart = batch_start + 1, so decrease batch_start by 1
   # Documentation is wrong: https://dataguide.nlm.nih.gov/eutilities/utilities.html#efetch

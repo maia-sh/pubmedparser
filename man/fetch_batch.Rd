@@ -7,6 +7,7 @@
 fetch_batch(
   esearch,
   batch_start = 1,
+  records_max = NULL,
   batch_size = 10000,
   save_file = TRUE,
   dir = here::here(),
@@ -17,7 +18,9 @@ fetch_batch(
 \arguments{
 \item{esearch}{Esearch object. Generally the output of \code{\link{search_get_pmids}} or \code{\link{check_update_esearch}}.}
 
-\item{batch_start}{Record batch should start with. Default to 1.
+\item{batch_start}{Record batch should start with. Default to 1.}
+
+\item{records_max}{Max records to fetch. Defaults to NULL and dynamically set to max of esearch query.
 @param  batch_size Maximum batch size. Defaults to 10000, which is eutilities' limit.
 @param save_file Whether batch should be saved as raw characters to file. Defaults to TRUE.
 @param dir Directory for saving files. Default to project root (\code{here::here()})

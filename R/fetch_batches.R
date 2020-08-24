@@ -46,6 +46,7 @@ fetch_batches <- function(esearch, #or web_history?
 
     records_batch <- fetch_batch(esearch = esearch,
                                           batch_start = batch_start,
+                                          records_max = fetch_end,
                                           batch_size = batch_size,
                                           save_file = save_each_batch,
                                           dir = dir)
