@@ -2,7 +2,8 @@
 #'
 #' Batch IDs to account for Eutils server limits
 #' @param esearch Esearch object. Generally the output of \code{\link{search_get_pmids}} or \code{\link{check_update_esearch}}.
-#' @param  batch_start Record batch should start with. Default to 1.
+#' @param fetch_start Record fetch should start with. Default to 1.
+#' @param fetch_end Record fetch should end with. Defaults to NULL and dynamically set to max of esearch query.
 #'  @param  batch_size Maximum batch size. Defaults to 10000, which is eutilities' limit.
 #'  @param sleep_time Sleep between queries to respect server limits. Defaults to 0.2 seconds.
 #'  @param dir Directory for saving files. Default to project root (\code{here::here()})
@@ -21,7 +22,8 @@
 #'@export
 
 fetch_batches <- function(esearch, #or web_history?
-                          batch_start = 1,
+                          fetch_start = 1,
+                          fetch_end = NULL,
                           batch_size = 10000,
                           sleep_time = 0.2,
                           dir = here::here(),
@@ -36,7 +38,9 @@ fetch_batches <- function(esearch, #or web_history?
     all_records_nodeset <- NULL
   }
 
-  for (batch_start in seq(1, esearch$count, batch_size)) {
+  if (is_null(fetch_end)) {fetch_end <- esearch$count}
+
+  for (batch_start in seq(fetch_start, fetch_end, batch_size)) {
 
     esearch <- check_update_esearch(esearch)
 
