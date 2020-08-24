@@ -40,7 +40,7 @@ fetch_batches <- function(esearch, #or web_history?
 
     esearch <- check_update_esearch(esearch)
 
-    records_batch <- rentrez::fetch_batch(esearch = esearch,
+    records_batch <- fetch_batch(esearch = esearch,
                                           batch_start = batch_start,
                                           batch_size = batch_size,
                                           save_file = save_each_batch,
