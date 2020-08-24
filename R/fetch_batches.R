@@ -42,6 +42,8 @@ fetch_batches <- function(esearch, #or web_history?
 
   for (batch_start in seq(fetch_start, fetch_end, batch_size)) {
 
+    rlang::inform(paste(batch_start, ":", esearch$web_history$WebEnv))
+
     esearch <- check_update_esearch(esearch)
 
     records_batch <- fetch_batch(esearch = esearch,
