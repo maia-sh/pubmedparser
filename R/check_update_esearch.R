@@ -36,11 +36,15 @@ check_update_esearch <- function(esearch){
     )
 
 
-    # If error due to expired esearch, log and re-search
-    # rettype = "json" throws `error`: "No esummary records found in file"
-    # rettype = "xml" throws `warning`: "Unable to obtain query #1"
-  } else if (cnd$message %in% c("No esummary records found in file", "Unable to obtain query #1")){
-    rlang::inform("Esearch no longer valid on history server. Re-posting esearch.")
+    # If error due to expired esearch or search with too many id's, log and re-search
+    # if expired, rettype = "json" throws `error`: "No esummary records found in file"
+    # if expired, rettype = "xml" throws `warning`: "Unable to obtain query #1"
+    # if too many ids in retmax, rettype = "json" throws `error`: "Esummary includes error message: Too many UIDs in request. Maximum number of UIDs is 500 for JSON format output."
+  } else if (cnd$message %in% c("No esummary records found in file",
+                                "Unable to obtain query #1",
+                                "Esummary includes error message: Too many UIDs in request. Maximum number of UIDs is 500 for JSON format output.")){
+
+    rlang::inform("Esearch no longer valid on history server or too many ids for esummary. Re-posting esearch.")
 
     esearch <-
       rentrez::entrez_search(db = "pubmed",
@@ -60,7 +64,7 @@ check_update_esearch <- function(esearch){
                    esearch_webenv = esearch$web_history$WebEnv
     )
 
-
+    # TODO: Add error to re-search: Esummary includes error message: Too many UIDs in request. Maximum number of UIDs is 500 for JSON format output.
     # For any other error or warning, throw error
   } else {
 
