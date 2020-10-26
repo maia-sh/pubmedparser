@@ -3,6 +3,7 @@
 #' Batch IDs to account for Eutils server limits
 #' @param term Query for search
 #' @param dir Directory for saving files. Default to project root (\code{here::here()})
+#' @param file_name Root for file names. Default to NULL and dynamically set to esearch query.
 #' @param output Save full esearch record (as "rds") and/or PMIDs (as "rda" and/or "txt". Default to all (\code{c("rda", "rds", "txt")})
 
 #' @return Esearch object
@@ -16,6 +17,7 @@
 
 
 search_get_pmids <- function(term,
+                             file_name = NULL,
                              dir = here::here(),
                              output = c("rda", "rds", "txt")) {
 
@@ -36,6 +38,8 @@ search_get_pmids <- function(term,
                            retmax = esearch$count
     )
 
+  # Set file_name to query translation if not user-specified
+  if(is.null(file_name)) file_name <- esearch$QueryTranslation
 
   # Log info about the search
   loggit::loggit("ESEARCH", echo = FALSE, custom_log_lvl = TRUE,
@@ -51,7 +55,7 @@ search_get_pmids <- function(term,
   if ("rds" %in% output) {
     readr::write_rds(
       esearch,
-      paste0(dir, "/", Sys.Date(), "_" , esearch$QueryTranslation, "_pmids.rds")
+      paste0(dir, "/", Sys.Date(), "_" , file_name, "_pmids.rds")
     )
   }
 
@@ -64,7 +68,7 @@ search_get_pmids <- function(term,
     save(
       pmids,
       file =
-        paste0(dir, "/", Sys.Date(), "_" , esearch$QueryTranslation, "_pmids.rda")
+        paste0(dir, "/", Sys.Date(), "_" , file_name, "_pmids.rda")
     )
   }
 
@@ -72,7 +76,7 @@ search_get_pmids <- function(term,
   if ("txt" %in% output) {
     readr::write_lines(
       esearch$ids,
-      paste0(dir, "/", Sys.Date(), "_" , esearch$QueryTranslation, "_pmids.txt")
+      paste0(dir, "/", Sys.Date(), "_" , file_name, "_pmids.txt")
     )
   }
 

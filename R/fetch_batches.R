@@ -7,7 +7,7 @@
 #'  @param  batch_size Maximum batch size. Defaults to 10000, which is eutilities' limit.
 #'  @param sleep_time Sleep between queries to respect server limits. Defaults to 0.2 seconds.
 #'  @param dir Directory for saving files. Default to project root (\code{here::here()})
-#' @param file_name Root for file names. Default to NULL and dynamically set to esearch query.
+#' @param file_name Root for file names. Default to esearch query.
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
 #' @param save_each_batch Whether each batch should be saved as raw characters to file. Defaults to TRUE.
 #' @param save_all_batches Whether all batches should be saved as vector of raw characters to file and nodeset. Defaults to FALSE (NOTE: This parameter is in development and should be set to FALSE.)

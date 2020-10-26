@@ -7,7 +7,7 @@
 #'  @param  batch_size Maximum batch size. Defaults to 10000, which is eutilities' limit.
 #'  @param save_file Whether batch should be saved as raw characters to file. Defaults to TRUE.
 #'  @param dir Directory for saving files. Default to project root (\code{here::here()})
-#'  @param file_name Root for file names. Default to NULL and dynamically set to esearch query.
+#'  @param file_name Root for file names. Default to esearch query.
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
 #' @param dir Directory for saving files. Default to project root (\code{here::here()})
 #' @return Efetch object as raw characters

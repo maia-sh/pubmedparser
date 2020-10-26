@@ -4,10 +4,17 @@
 \alias{search_get_pmids}
 \title{Run E-utilities search and save PMIDs}
 \usage{
-search_get_pmids(term, dir = here::here(), output = c("rda", "rds", "txt"))
+search_get_pmids(
+  term,
+  file_name = NULL,
+  dir = here::here(),
+  output = c("rda", "rds", "txt")
+)
 }
 \arguments{
 \item{term}{Query for search}
+
+\item{file_name}{Root for file names. Default to NULL and dynamically set to esearch query.}
 
 \item{dir}{Directory for saving files. Default to project root (\code{here::here()})}
 
