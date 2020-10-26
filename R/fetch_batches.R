@@ -27,7 +27,7 @@ fetch_batches <- function(esearch, #or web_history?
                           batch_size = 10000,
                           sleep_time = 0.2,
                           dir = here::here(),
-                          file_name = NULL,
+                          file_name = esearch$QueryTranslation,
                           quiet = FALSE,
                           save_each_batch = TRUE,
                           # could separate raw/nodeset)
@@ -87,7 +87,7 @@ fetch_batches <- function(esearch, #or web_history?
       all_records_raw,
       paste0(dir, "/",
              Sys.Date(),"_",
-             esearch$QueryTranslation, "_",
+             file_name, "_",
              "all-records_",
              format(esearch$count, scientific = FALSE),
              ".rds"

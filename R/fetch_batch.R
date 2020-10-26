@@ -26,7 +26,7 @@ fetch_batch <- function(esearch, #or web_history?
                         batch_size = 10000,
                         save_file = TRUE,
                         dir = here::here(),
-                        file_name = NULL,
+                        file_name = esearch$QueryTranslation,
                         quiet = FALSE) {
 
 
@@ -57,7 +57,7 @@ fetch_batch <- function(esearch, #or web_history?
     readr::write_file(efetch,
                       paste0(dir, "/",
                              Sys.Date(),"_",
-                             esearch$QueryTranslation, "_",
+                             file_name, "_",
                              format(batch_start, scientific = FALSE), "-",
                              format(batch_end, scientific = FALSE), ".txt"
                       )
