@@ -21,6 +21,9 @@ search_get_pmids <- function(term,
                              dir = here::here(),
                              output = c("rda", "rds", "txt")) {
 
+  # Create directory if it doesn't exist
+  if (!fs::dir_exists(dir)) {fs::dir_create(dir)}
+
   # Get number of records
   esearch <-
     rentrez::entrez_search(db = "pubmed",
@@ -39,7 +42,7 @@ search_get_pmids <- function(term,
     )
 
   # Set file_name to query translation if not user-specified
-  if(is.null(file_name)) file_name <- esearch$QueryTranslation
+  if(is.null(file_name)) {file_name <- esearch$QueryTranslation}
 
   # Log info about the search
   loggit::loggit("ESEARCH", echo = FALSE, custom_log_lvl = TRUE,

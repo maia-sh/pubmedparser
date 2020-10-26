@@ -30,6 +30,9 @@ fetch_batch <- function(esearch, #or web_history?
                         quiet = FALSE) {
 
 
+  # Create directory if it doesn't exist
+  if (!fs::dir_exists(dir)) {fs::dir_create(dir)}
+
   if (is_null(records_max)) {records_max <- esearch$count}
 
   # Batch ends at batch max, query max, or records max, whichever is smaller

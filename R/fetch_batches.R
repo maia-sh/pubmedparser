@@ -33,6 +33,9 @@ fetch_batches <- function(esearch, #or web_history?
                           # could separate raw/nodeset)
                           save_all_batches = FALSE){
 
+  # Create directory if it doesn't exist
+  if (!fs::dir_exists(dir)) {fs::dir_create(dir)}
+
   if (save_all_batches) {
     all_records_raw <- NULL
     all_records_nodeset <- NULL

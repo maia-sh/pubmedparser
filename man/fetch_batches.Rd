@@ -27,7 +27,7 @@ fetch_batches(
 @param sleep_time Sleep between queries to respect server limits. Defaults to 0.2 seconds.
 @param dir Directory for saving files. Default to project root (\code{here::here()})}
 
-\item{file_name}{Root for file names. Default to NULL and dynamically set to esearch query.}
+\item{file_name}{Root for file names. Default to esearch query.}
 
 \item{quiet}{Whether to silence messages in console. Defaults to FALSE.}
 
