@@ -11,7 +11,7 @@ fetch_batches(
   batch_size = 10000,
   sleep_time = 0.2,
   dir = here::here(),
-  file_name = NULL,
+  file_name = esearch$QueryTranslation,
   quiet = FALSE,
   save_each_batch = TRUE,
   save_all_batches = FALSE
