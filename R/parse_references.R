@@ -5,6 +5,5 @@
 #' @param pubmed_article pubmed_article Unparsed or parsed XML of class PubmedArticle. Generally called by \code{\link{parse_pubmed_article_set}} to parse articles within article set.
 #' @return Dataframe of information about references.
 #' @export
-#' @examples
 
 parse_references <- 1

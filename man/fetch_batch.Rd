@@ -20,13 +20,15 @@ fetch_batch(
 
 \item{batch_start}{Record batch should start with. Default to 1.}
 
-\item{records_max}{Max records to fetch. Defaults to NULL and dynamically set to max of esearch query.
-@param  batch_size Maximum batch size. Defaults to 10000, which is eutilities' limit.
-@param save_file Whether batch should be saved as raw characters to file. Defaults to TRUE.
-@param dir Directory for saving files. Default to project root (\code{here::here()})
-@param file_name Root for file names. Default to esearch query.}
+\item{records_max}{Max records to fetch. Defaults to NULL and dynamically set to max of esearch query.}
+
+\item{batch_size}{Maximum batch size. Defaults to 10000, which is eutilities' limit.}
+
+\item{save_file}{Whether batch should be saved as raw characters to file. Defaults to TRUE.}
 
 \item{dir}{Directory for saving files. Default to project root (\code{here::here()})}
+
+\item{file_name}{Root for file names. Default to esearch query.}
 
 \item{quiet}{Whether to silence messages in console. Defaults to FALSE.}
 }
