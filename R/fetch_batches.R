@@ -48,12 +48,14 @@ fetch_batches <- function(esearch, #or web_history?
     esearch <- check_update_esearch(esearch)
 
     records_batch <- fetch_batch(esearch = esearch,
-                                          batch_start = batch_start,
-                                          records_max = fetch_end,
-                                          batch_size = batch_size,
-                                          save_file = save_each_batch,
-                                          file_name = file_name,
-                                          dir = dir)
+                                 batch_start = batch_start,
+                                 records_max = fetch_end,
+                                 batch_size = batch_size,
+                                 save_file = save_each_batch,
+                                 file_name = file_name,
+                                 dir = dir,
+                                 quiet = quiet
+    )
 
     # If saving all batches, add batch to vector of all records
     if (save_all_batches) {
