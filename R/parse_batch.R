@@ -1,12 +1,13 @@
 #' Parse batch of PubMed records and extract specified datatypes
 #'
 #' @param batch Batch of unparsed PubMed records, such as the output of \code{\link{fetch_batch}}.
-#' @param pmids Vector of pmids
+#' @param pmids Vector of pmids. If pmids not user-provided, pmids will be saved as .rds.
 #' @param datatypes Types of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")
 #' @param file_name Root for file names. Default to "pubmed".
 #' @param suffix Suffice for file names. For example, record numbers. Default to null.
 #' @param dir Directory for saving files. Default to project root (\code{here::here()})
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
+#' @return Parsed xml with names = pmids.
 #' @export
 
 parse_batch <- function(batch,
@@ -31,10 +32,10 @@ parse_batch <- function(batch,
       xml_find_all("PubmedArticle") %>%
       set_names(pmids)
   } else {
-    articles <- pubmed_nodeset(batch)
+    articles <- tidypubmed::pubmed_nodeset(batch)
     pmids <- names(articles)
 
-    write_rds(
+    readr::write_rds(
       pmids,
       paste0(dir, "/",
              Sys.Date(),"_",
@@ -46,5 +47,11 @@ parse_batch <- function(batch,
     )
   }
   # Create tables
-  walk(datatypes, ~ extract_datatype(., articles, suffix = suffix, quiet = quiet))
+  purrr::walk(datatypes,
+       ~ extract_datatype(., articles,
+                          file_name = file_name, suffix = suffix,
+                          dir = dir, quiet = quiet)
+  )
+
+  articles
 }

@@ -4,14 +4,25 @@
 \alias{extract_datatype}
 \title{Extract specified datatype from PubMed xml into csv}
 \usage{
-extract_datatype(datatype, nodes, suffix = NULL, quiet = FALSE)
+extract_datatype(
+  datatype,
+  nodes,
+  file_name = "pubmed",
+  suffix = NULL,
+  dir = here::here(),
+  quiet = FALSE
+)
 }
 \arguments{
 \item{datatype}{Type of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")}
 
 \item{nodes}{Article node set}
 
+\item{file_name}{Root for file names. Default to "pubmed".}
+
 \item{suffix}{Suffice for file names. For example, record numbers. Default to null.}
+
+\item{dir}{Directory for saving files. Default to project root (\code{here::here()})}
 
 \item{quiet}{Whether to silence messages in console. Defaults to FALSE.}
 }
