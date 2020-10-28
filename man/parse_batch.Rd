@@ -2,7 +2,7 @@
 % Please edit documentation in R/parse_batch.R
 \name{parse_batch}
 \alias{parse_batch}
-\title{Parse batch of PubMed records and extract specified datatypes}
+\title{Parse batch of PubMed records and extract specified datatypes as csv's}
 \usage{
 parse_batch(
   batch,
@@ -12,7 +12,8 @@ parse_batch(
   file_name = "pubmed",
   suffix = NULL,
   dir = here::here(),
-  quiet = FALSE
+  quiet = FALSE,
+  return = TRUE
 )
 }
 \arguments{
@@ -22,17 +23,19 @@ parse_batch(
 
 \item{datatypes}{Types of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")}
 
-\item{file_name}{Root for file names. Default to "pubmed".}
+\item{file_name}{Root for file names. Defaults to "pubmed".}
 
 \item{suffix}{Suffice for file names. For example, record numbers. Default to null.}
 
-\item{dir}{Directory for saving files. Default to project root (\code{here::here()})}
+\item{dir}{Directory for saving files. Defaults to project root (\code{here::here()})}
 
 \item{quiet}{Whether to silence messages in console. Defaults to FALSE.}
+
+\item{return}{Whether to return parsed xml. Defaults to TRUE. Set to FALSE if interested in only side-effect csv's.}
 }
 \value{
-Parsed xml with names = pmids.
+Parsed xml with names = pmids. Also, side-effect of specified datatypes as csv's.
 }
 \description{
-Parse batch of PubMed records and extract specified datatypes
+Parse batch of PubMed records and extract specified datatypes as csv's
 }
