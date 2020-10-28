@@ -25,17 +25,17 @@ parse_doc <- function(doc,
                       quiet = FALSE,
                       return = TRUE){
 
-  # if default file_name and suffix, check for pattern matches
+  # If default file_name and suffix, check for pattern matches
   if (file_name == "pubmed" & is.null(suffix)){
 
-    # if YYYY-MM-DD_{FILENAME}_{SUFFIX}.txt
+    # If YYYY-MM-DD_{FILENAME}_{SUFFIX}.txt
     if (stringr::str_detect(doc, "\\d{4}-\\d{2}-\\d{2}_[^_]+_[^_]+\\.txt$")){
 
       file <- stringr::str_extract(doc, "\\d{4}-\\d{2}-\\d{2}_[^_]+_[^_]+\\.txt$")
       file_name <- stringr::str_extract(doc, "(?<=\\d{4}-\\d{2}-\\d{2}_)[^_]+(?=_)")
       suffix <- stringr::str_extract(doc, "(?<=_)[^_]+(?=\\.txt$)")
 
-      # if YYYY-MM-DD_{FILENAME}.txt
+      # If YYYY-MM-DD_{FILENAME}.txt
     } else if (stringr::str_detect(doc, "\\d{4}-\\d{2}-\\d{2}_[^_]+\\.txt$")) {
 
       file <- stringr::str_extract(doc, "\\d{4}-\\d{2}-\\d{2}_[^_]+\\.txt$")
@@ -48,8 +48,8 @@ parse_doc <- function(doc,
     }
   }
 
-  # inform user of file_name and suffix
-  rlang::inform(message = cat("Parsing", file,
+  # Inform user of file_name and suffix
+  rlang::inform(message = paste("Parsing", file,
                             "\nfile_name:", file_name,
                             "\nsuffix:", suffix)
   )

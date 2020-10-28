@@ -34,6 +34,9 @@ parse_batch <- function(batch,
       read_xml() %>%
       xml_find_all("PubmedArticle") %>%
       set_names(pmids)
+
+    rlang::inform(paste("Created xml_nodeset with", length(pmids), "articles"))
+
   } else {
     articles <- tidypubmed::pubmed_nodeset(batch)
     pmids <- names(articles)
@@ -48,7 +51,21 @@ parse_batch <- function(batch,
              ".rds"
       )
     )
+    rlang::inform("PMIDs written to .rds")
   }
+
+  # Log batch info
+  loggit::loggit("PARSE_XML", echo = FALSE, custom_log_lvl = TRUE,
+                 log_msg  = paste("Parsed xml_nodeset:", length(pmids))#,
+                 # esearch_new = NA,
+                 # esearch_query = esearch$QueryTranslation,
+                 # esearch_count = esearch$count,
+                 # esearch_webenv = esearch$web_history$WebEnv,
+                 # efetch_n_records  = batch_end - batch_start + 1,
+                 # efetch_start = batch_start,
+                 # efetch_end = batch_end
+  )
+
   # Create tables
   purrr::walk(datatypes,
        ~ extract_datatype(., articles,

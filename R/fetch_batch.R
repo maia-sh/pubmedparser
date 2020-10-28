@@ -74,7 +74,7 @@ fetch_batch <- function(esearch, #or web_history?
     rlang::inform(
       # Can't report on n_batches, since function doesn't know
       # "Batch ", n_batch, " of ", n_batches, ": ",
-      message = cat(
+      message = paste(
         "Fetched ", batch_end - batch_start + 1, " records ",
         "from ", batch_start, " through ", batch_end
       )

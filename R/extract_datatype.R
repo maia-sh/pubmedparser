@@ -42,7 +42,7 @@ extract_datatype <- function(datatype,
     rlang::inform(
       # Can't report on n_batches, since function doesn't know
       # "Batch ", n_batch, " of ", n_batches, ": ",
-      message = cat(
+      message = paste(
         "Parse xml:", datatype
         # "Fetched ", batch_end - batch_start + 1, " records ",
         # "from ", batch_start, " through ", batch_end
