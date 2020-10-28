@@ -19,7 +19,9 @@ The [NLM ID Converter](https://www.ncbi.nlm.nih.gov/pmc/pmctopmid/#converter) is
 [E-Utils esummary](https://dataguide.nlm.nih.gov/eutilities/utilities.html#esummary) includes articles identifiers.
 }
 \examples{
-esummary <- entrez_summary(db = "pubmed", id = "29848381")
+esummary <- rentrez::entrez_summary(db = "pubmed", id = "29848381")
+\dontrun{
 extract_dois_pmids(esummary)
+}
 
 }

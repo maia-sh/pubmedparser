@@ -8,8 +8,10 @@
 #' @return One-row tibble of character DOI and numeric PMID associated with record.
 #'
 #' @examples
-#' esummary <- entrez_summary(db = "pubmed", id = "29848381")
+#' esummary <- rentrez::entrez_summary(db = "pubmed", id = "29848381")
+#' \dontrun{
 #' extract_dois_pmids(esummary)
+#' }
 #'
 #'@export
 

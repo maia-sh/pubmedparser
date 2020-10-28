@@ -13,11 +13,12 @@
 #' @return Efetch object as raw characters
 #'
 #' @examples
+#' \dontrun{
 #' # Run search and don't save any output
 #' records_search <- search_get_pmids(term = "aquilegia[TITLE]",
 #'                                    dir = NULL, output = NULL)
 #' batch <- fetch_batch(records_search)
-#'
+#' }
 #' @export
 
 fetch_batch <- function(esearch, #or web_history?

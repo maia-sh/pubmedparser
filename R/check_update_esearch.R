@@ -6,10 +6,11 @@
 #' @return Esearch object
 #'
 #' @examples
-#'
+#' \dontrun{
 #' records_search <- search_get_pmids(term = "aquilegia[TITLE]",
 #'                                    dir = NULL, output = NULL)
 #' records_search <- check_update_esearch(records_search)
+#' }
 #'@export
 
 check_update_esearch <- function(esearch){

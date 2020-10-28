@@ -37,7 +37,7 @@ my_article_set <-
   batch_fetch_pubmed_records()
   
 # Save file to current directory
-write_pubmed_files(my_article_set)
+# write_pubmed_files(my_article_set)
 ````
 
 ## PART 2: Extract and tidy data from PubMed records

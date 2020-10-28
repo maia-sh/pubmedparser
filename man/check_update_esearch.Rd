@@ -16,8 +16,9 @@ Esearch object
 History kept on eutilities servers for less than an hour, so for large queries needs to be updated.
 }
 \examples{
-
+\dontrun{
 records_search <- search_get_pmids(term = "aquilegia[TITLE]",
                                    dir = NULL, output = NULL)
 records_search <- check_update_esearch(records_search)
+}
 }

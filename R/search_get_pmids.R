@@ -9,10 +9,11 @@
 #' @return Esearch object
 #'
 #' @examples
+#' \dontrun{
 #' # Run search and don't save any output
 #' records_search <- search_get_pmids(term = "aquilegia[TITLE]",
 #'                                    dir = NULL, output = NULL)
-#'
+#' }
 #'@export
 
 

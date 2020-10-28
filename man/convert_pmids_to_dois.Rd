@@ -20,10 +20,11 @@ The [NLM ID Converter](https://www.ncbi.nlm.nih.gov/pmc/pmctopmid/#converter) is
 \examples{
 my_pmids <- c("29904359", "29855634", "29848381", "29805157")
 
+\dontrun{
 # Returns all available PMIDs (3 PMIDs)
 convert_pmids_to_dois(my_pmids)
 
 # Returns number of PMIDs within \code{batch_size} (2 PMIDs)
 convert_pmids_to_dois(my_pmids, batch_size = 3)
-
+}
 }

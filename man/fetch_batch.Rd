@@ -39,9 +39,10 @@ Efetch object as raw characters
 Batch IDs to account for Eutils server limits
 }
 \examples{
+\dontrun{
 # Run search and don't save any output
 records_search <- search_get_pmids(term = "aquilegia[TITLE]",
                                    dir = NULL, output = NULL)
 batch <- fetch_batch(records_search)
-
+}
 }

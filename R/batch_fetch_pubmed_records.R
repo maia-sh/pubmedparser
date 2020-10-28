@@ -13,12 +13,15 @@
 #' # Fetch a single PubMed batch
 #' my_query_single <- '"10.3389/fpsyt.2018.00207"[DOI] OR "10.1186/s40779-018-0166-5"[DOI] OR "10.1186/s12959-018-0173-5"[DOI] OR "10.1103/PhysRevD.97.096016"[DOI] OR "10.1038/d41586-018-05113-0"[DOI]'
 #'
+#' \dontrun{
 #' batch_fetch_pubmed_records(my_query_single)
+#' }
 #'
 #' # Fetch a multiple PubMed batches
 #' my_query_multi <- c('"\"10.3389/fpsyt.2018.00207\"[DOI] OR \"10.1186/s40779-018-0166-5\"[DOI] OR \"10.1186/s12959-018-0173-5\"[DOI]"', '"\"10.1103/PhysRevD.97.096016\"[DOI] OR \"10.1038/d41586-018-05113-0\"[DOI]"')
-#'
+#' \dontrun{
 #' batch_fetch_pubmed_records(my_query_multi, batch_size = 3)
+#' }
 
 # TODO: assign batch_size
 # TODO: get intermediary output from esearch

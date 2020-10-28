@@ -19,6 +19,7 @@ Imports:
     xml2,
     rentrez,
     rlang,
-    magrittr
+    magrittr,
+    here
 Suggests: 
     testthat

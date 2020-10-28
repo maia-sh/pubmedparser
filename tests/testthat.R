@@ -1,4 +1,4 @@
-library(testthat)
-library(pubmedparser)
-
-test_check("pubmedparser")
+# library(testthat)
+# library(pubmedparser)
+#
+# test_check("pubmedparser")
