@@ -1,7 +1,7 @@
 #' Parse batch of PubMed records and extract specified datatypes
 #'
 #' @param batch Batch of unparsed PubMed records, such as the output of \code{\link{fetch_batch}}.
-#' @param pmids Vector of pmids
+#' @param pmids Vector of pmids. If pmids not user-provided, pmids will be saved as .rds.
 #' @param datatypes Types of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")
 #' @param file_name Root for file names. Default to "pubmed".
 #' @param suffix Suffice for file names. For example, record numbers. Default to null.

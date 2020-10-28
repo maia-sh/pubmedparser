@@ -2,12 +2,14 @@
 #'
 #' @param datatype Type of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")
 #' @param nodes Article node set
+#' @param file_name Root for file names. Default to "pubmed".
 #' @param suffix Suffice for file names. For example, record numbers. Default to null.
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
 #' @export
 
 extract_datatype <- function(datatype,
                              nodes,
+                             file_name = "pubmed",
                              suffix = NULL,
                              quiet = FALSE) {
 

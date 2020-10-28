@@ -18,7 +18,7 @@ parse_batch(
 \arguments{
 \item{batch}{Batch of unparsed PubMed records, such as the output of \code{\link{fetch_batch}}.}
 
-\item{pmids}{Vector of pmids}
+\item{pmids}{Vector of pmids. If pmids not user-provided, pmids will be saved as .rds.}
 
 \item{datatypes}{Types of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")}
 

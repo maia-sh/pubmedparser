@@ -4,12 +4,20 @@
 \alias{extract_datatype}
 \title{Extract specified datatype from PubMed xml into csv}
 \usage{
-extract_datatype(datatype, nodes, suffix = NULL, quiet = FALSE)
+extract_datatype(
+  datatype,
+  nodes,
+  file_name = "pubmed",
+  suffix = NULL,
+  quiet = FALSE
+)
 }
 \arguments{
 \item{datatype}{Type of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")}
 
 \item{nodes}{Article node set}
+
+\item{file_name}{Root for file names. Default to "pubmed".}
 
 \item{suffix}{Suffice for file names. For example, record numbers. Default to null.}
 
