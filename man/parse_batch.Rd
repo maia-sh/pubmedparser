@@ -25,7 +25,7 @@ parse_batch(
 
 \item{file_name}{Root for file names. Defaults to "pubmed".}
 
-\item{suffix}{Suffice for file names. For example, record numbers. Default to null.}
+\item{suffix}{Suffix for file names. For example, record numbers. Defaults to NULL.}
 
 \item{dir}{Directory for saving files. Defaults to project root (\code{here::here()})}
 

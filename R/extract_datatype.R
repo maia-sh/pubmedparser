@@ -2,9 +2,9 @@
 #'
 #' @param datatype Type of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")
 #' @param nodes Article node set
-#' @param file_name Root for file names. Default to "pubmed".
-#' @param suffix Suffice for file names. For example, record numbers. Default to null.
-#' @param dir Directory for saving files. Default to project root (\code{here::here()})
+#' @param file_name Root for file names. Defaults to "pubmed".
+#' @param suffix Suffix for file names. For example, record numbers. Defaults to NULL.
+#' @param dir Directory for saving files. Defaults to project root (\code{here::here()})
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
 #' @export
 
@@ -43,7 +43,7 @@ extract_datatype <- function(datatype,
       # Can't report on n_batches, since function doesn't know
       # "Batch ", n_batch, " of ", n_batches, ": ",
       message = cat(
-        "Parse xml: ", datatype
+        "Parse xml:", datatype
         # "Fetched ", batch_end - batch_start + 1, " records ",
         # "from ", batch_start, " through ", batch_end
       )

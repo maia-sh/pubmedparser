@@ -31,7 +31,7 @@ fetch_batches <- function(esearch, #or web_history?
                           file_name = esearch$QueryTranslation,
                           quiet = FALSE,
                           save_each_batch = TRUE,
-                          # could separate raw/nodeset)
+                          # could separate raw/nodeset
                           save_all_batches = FALSE){
 
   # Create directory if it doesn't exist

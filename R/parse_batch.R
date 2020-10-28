@@ -4,7 +4,7 @@
 #' @param pmids Vector of pmids. If pmids not user-provided, pmids will be saved as .rds.
 #' @param datatypes Types of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")
 #' @param file_name Root for file names. Defaults to "pubmed".
-#' @param suffix Suffice for file names. For example, record numbers. Default to null.
+#' @param suffix Suffix for file names. For example, record numbers. Defaults to NULL.
 #' @param dir Directory for saving files. Defaults to project root (\code{here::here()})
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
 #' @param return Whether to return parsed xml. Defaults to TRUE. Set to FALSE if interested in only side-effect csv's.
