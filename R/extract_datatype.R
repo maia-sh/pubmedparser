@@ -4,6 +4,7 @@
 #' @param nodes Article node set
 #' @param suffix Suffice for file names. For example, record numbers. Default to null.
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
+#' @export
 
 extract_datatype <- function(datatype,
                              nodes,

@@ -7,6 +7,7 @@
 #' @param suffix Suffice for file names. For example, record numbers. Default to null.
 #' @param dir Directory for saving files. Default to project root (\code{here::here()})
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
+#' @export
 
 parse_batch <- function(batch,
                         pmids = NULL,
