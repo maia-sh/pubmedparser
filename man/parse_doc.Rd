@@ -12,6 +12,7 @@ parse_doc(
   file_name = "pubmed",
   suffix = NULL,
   dir = here::here(),
+  subdir = dir,
   quiet = FALSE,
   return = TRUE
 )
@@ -27,7 +28,9 @@ parse_doc(
 
 \item{suffix}{Suffix for file names. For example, record numbers. Defaults to NULL.}
 
-\item{dir}{Directory for saving files. Defaults to project root (\code{here::here()})}
+\item{dir}{Directory for saving files (log file and pmids.rds, and extracted csv's, depending on \code{subdir}). Defaults to project root (\code{here::here()})}
+
+\item{subdir}{Directory for saving extracted csv's. Defaults to \code{dir}.}
 
 \item{quiet}{Whether to silence messages in console. Defaults to FALSE.}
 
