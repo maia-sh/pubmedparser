@@ -37,7 +37,9 @@ parse_batch <- function(batch,
       xml_find_all("PubmedArticle") %>%
       set_names(pmids)
 
-    rlang::inform(paste("Created xml_nodeset with", length(pmids), "articles"))
+    if (!quiet){
+      rlang::inform(paste("Created xml_nodeset with", length(pmids), "articles"))
+    }
 
   } else {
     articles <- tidypubmed::pubmed_nodeset(batch)
@@ -53,7 +55,7 @@ parse_batch <- function(batch,
              ".rds"
       )
     )
-    rlang::inform("PMIDs written to .rds")
+    if (!quiet) {rlang::inform("PMIDs written to .rds")}
   }
 
   # Log batch info

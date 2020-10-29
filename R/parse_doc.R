@@ -51,11 +51,12 @@ parse_doc <- function(doc,
   }
 
   # Inform user of file_name and suffix
-  rlang::inform(message = paste("Parsing", file,
-                            "\nfile_name:", file_name,
-                            "\nsuffix:", suffix)
-  )
-
+  if (!quiet){
+    rlang::inform(message = paste("Parsing", file,
+                                  "\nfile_name:", file_name,
+                                  "\nsuffix:", suffix)
+    )
+  }
 
   doc <- readr::read_file(doc)
 
