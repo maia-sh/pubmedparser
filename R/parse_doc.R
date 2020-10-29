@@ -5,7 +5,8 @@
 #' @param datatypes Types of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")
 #' @param file_name Root for file names. Defaults to "pubmed".
 #' @param suffix Suffix for file names. For example, record numbers. Defaults to NULL.
-#' @param dir Directory for saving files. Defaults to project root (\code{here::here()})
+#' @param dir Directory for saving files (log file and pmids.rds, and extracted csv's, depending on \code{subdir}). Defaults to project root (\code{here::here()})
+#' @param subdir Directory for saving extracted csv's. Defaults to \code{dir}.
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
 #' @param return Whether to return parsed xml. Defaults to TRUE. Set to FALSE if interested in only side-effect csv's.
 #'
@@ -22,6 +23,7 @@ parse_doc <- function(doc,
                       file_name = "pubmed",
                       suffix = NULL,
                       dir = here::here(),
+                      subdir = dir,
                       quiet = FALSE,
                       return = TRUE){
 
@@ -63,6 +65,7 @@ parse_doc <- function(doc,
                             file_name = file_name,
                             suffix = suffix,
                             dir = dir,
+                            subdir = subdir,
                             quiet = quiet,
                             return = return)
 

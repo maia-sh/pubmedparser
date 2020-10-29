@@ -25,6 +25,9 @@ extract_datatype <- function(datatype,
     )
   }
 
+  # Create directory if it doesn't exist
+  if (!fs::dir_exists(dir)) {fs::dir_create(dir)}
+
   readr::write_csv(
     rlang::exec(paste0("pubmed_", datatype), nodes),
     paste0(dir, "/",

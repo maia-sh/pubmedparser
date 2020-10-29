@@ -5,7 +5,8 @@
 #' @param datatypes Types of data to extract from xml for which there is a corresponding "pubmed_" function ("table", "abstract", "databanks", "authors", "mesh", "keywords", "pubtypes")
 #' @param file_name Root for file names. Defaults to "pubmed".
 #' @param suffix Suffix for file names. For example, record numbers. Defaults to NULL.
-#' @param dir Directory for saving files. Defaults to project root (\code{here::here()})
+#' @param dir Directory for saving files (log file and pmids.rds, and extracted csv's, depending on \code{subdir}). Defaults to project root (\code{here::here()})
+#' @param subdir Directory for saving extracted csv's. Defaults to \code{dir}.
 #' @param quiet Whether to silence messages in console. Defaults to FALSE.
 #' @param return Whether to return parsed xml. Defaults to FALSE since complete batches may be too large to hold in memory and interested in only side-effect csv's. If TRUE, returns list of length number of files in \code{input_dir} with each element containing a parsed xml.
 #'
@@ -24,6 +25,7 @@ parse_batches <- function(input_dir,
                           file_name = "pubmed",
                           suffix = NULL,
                           dir = here::here(),
+                          subdir = dir,
                           quiet = FALSE,
                           return = FALSE){
 
@@ -46,19 +48,21 @@ parse_batches <- function(input_dir,
                 file_name = file_name,
                 suffix = suffix,
                 dir = dir,
+                subdir = subdir,
                 quiet = quiet,
                 return = return)
 
   } else if (return) {
 
     purrr::map(docs,
-                parse_doc,
-                pmids = pmids,
-                datatypes = datatypes,
-                file_name = file_name,
-                suffix = suffix,
-                dir = dir,
-                quiet = quiet,
-                return = return)
+               parse_doc,
+               pmids = pmids,
+               datatypes = datatypes,
+               file_name = file_name,
+               suffix = suffix,
+               dir = dir,
+               subdir = subdir,
+               quiet = quiet,
+               return = return)
   }
 }
