@@ -1,9 +1,10 @@
 #' Convert between PMIDs and DOIs using the [Fatcat](https://fatcat.wiki/) [API](https://api.fatcat.wiki/)
 #'
-#' Non-vectorized function. Wrap in `purrr::map_dfr()` to call on multiple ids.
+#' Non-vectorized function. Wrap in `purrr::map_dfr()` to call on multiple ids. May further develop vectorized option with `purrr::map()` or `plyr::llply`.
 #'
 #' @param is PMID (character) or DOI (character or numeric)
 #' @param type Character. Either "doi" or "pmid"
+#' @param quiet logical. Should success/error info be displayed? Default is TRUE.
 #'
 #' @return One row dataframe with DOI and PMID. If `id` not found in Fatcat, returns `id` and NA for other id type.
 #'
@@ -17,7 +18,7 @@
 #'   type = "doi"
 #' )
 
-fatcat_convert <- function(id, type) {
+fatcat_convert <- function(id, type, quiet = TRUE) {
 
   if (!exists("type") || !type %in% c("doi", "pmid")){
     rlang::abort('`type` must be "doi" or "pmid"')
@@ -30,6 +31,7 @@ fatcat_convert <- function(id, type) {
 
   # Error handling: return `id` and NA
   if (res$status_code != 200) {
+    status <- "not converted"
     if (type == "doi") {
       doi = id
       pmid = NA
@@ -40,10 +42,13 @@ fatcat_convert <- function(id, type) {
   }
 
   if (res$status_code == 200) {
+    status <- "converted"
     parsed <- suppressMessages(jsonlite::parse_json(res))
     pmid <- parsed$ext_ids$pmid
     doi <- parsed$ext_ids$doi
   }
+
+  if (!quiet) rlang::inform(glue::glue("{id}: {status}"))
 
   tibble::as_tibble_row(c(doi = doi, pmid = pmid))
 }
