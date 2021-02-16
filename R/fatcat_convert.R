@@ -2,7 +2,7 @@
 #'
 #' Non-vectorized function. Wrap in `purrr::map_dfr()` to call on multiple ids. May further develop vectorized option with `purrr::map()` or `plyr::llply`.
 #'
-#' @param is PMID (character) or DOI (character or numeric)
+#' @param id PMID (character) or DOI (character or numeric)
 #' @param type Character. Either "doi" or "pmid"
 #' @param quiet logical. Should success/error info be displayed? Default is TRUE.
 #'

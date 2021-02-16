@@ -7,11 +7,11 @@
 fatcat_convert(id, type, quiet = TRUE)
 }
 \arguments{
+\item{id}{PMID (character) or DOI (character or numeric)}
+
 \item{type}{Character. Either "doi" or "pmid"}
 
 \item{quiet}{logical. Should success/error info be displayed? Default is TRUE.}
-
-\item{is}{PMID (character) or DOI (character or numeric)}
 }
 \value{
 One row dataframe with DOI and PMID. If `id` not found in Fatcat, returns `id` and NA for other id type.
